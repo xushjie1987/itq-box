@@ -11,17 +11,24 @@ public class PathUtil {
     public static String getAbsolutePath(String path) {
         return new File(path).getAbsolutePath();
     }
-
+    
     public static boolean isDirectory(String path) {
-        return new File(path).getAbsoluteFile().isDirectory();
+        return new File(path).getAbsoluteFile()
+                             .isDirectory();
     }
-
-    public static Collection<File> getFiles(String path, String[] extensions, boolean recursive) {
+    
+    public static Collection<File> getFiles(String path,
+                                            String[] extensions,
+                                            boolean recursive) {
         if (isDirectory(path)) {
-            return FileUtils.listFiles(new File(path).getAbsoluteFile(), extensions, recursive);
+            return FileUtils.listFiles(new File(path).getAbsoluteFile(),
+                                       extensions,
+                                       recursive);
         } else {
             Collection<File> result = new ArrayList<File>();
-            if (FilenameUtils.isExtension(new File(path).getAbsolutePath().toLowerCase(), extensions)) {
+            if (FilenameUtils.isExtension(new File(path).getAbsolutePath()
+                                                        .toLowerCase(),
+                                          extensions)) {
                 result.add(new File(path).getAbsoluteFile());
                 return result;
             } else {
@@ -29,21 +36,29 @@ public class PathUtil {
             }
         }
     }
-
-    public static Collection<String> getAbsolutePaths(String path, String[] extensions, boolean recursive) {
-        Collection<File> files = getFiles(path, extensions, recursive);
+    
+    public static Collection<String> getAbsolutePaths(String path,
+                                                      String[] extensions,
+                                                      boolean recursive) {
+        Collection<File> files = getFiles(path,
+                                          extensions,
+                                          recursive);
         Collection<String> paths = new ArrayList<String>();
         for (File f : files) {
             paths.add(f.getAbsolutePath());
         }
         return paths;
     }
-
-    public static Collection<String> getRecords(String path, boolean recursive) {
-        Collection<String> paths = getAbsolutePaths(path, new String[] { "dbr" }, recursive);
+    
+    public static Collection<String> getRecords(String path,
+                                                boolean recursive) {
+        Collection<String> paths = getAbsolutePaths(path,
+                                                    new String[] { "dbr" },
+                                                    recursive);
         Collection<String> records = new ArrayList<String>();
         for (String p : paths) {
-            records.add(p.substring(p.toLowerCase().indexOf("records")));
+            records.add(p.substring(p.toLowerCase()
+                                     .indexOf("records")));
         }
         return records;
     }

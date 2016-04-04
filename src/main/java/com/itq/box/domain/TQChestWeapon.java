@@ -32,19 +32,21 @@ public enum TQChestWeapon {
     RING(2, 4),
     // 卷
     SCROLL(2, 4);
-
+    
     private final Integer width;
-
+    
     private final Integer height;
-
+    
     private final Integer max;
-
-    private TQChestWeapon(Integer width, Integer height) {
+    
+    private TQChestWeapon(Integer width,
+                          Integer height) {
         this.width = width;
         this.height = height;
-        this.max = (TQChestBox.MAX_ROW / height) * (TQChestBox.MAX_COL / width);
+        this.max = (TQChestBox.MAX_ROW / height) *
+                   (TQChestBox.MAX_COL / width);
     }
-
+    
     public Collection<Integer> getRowIndexes() {
         Collection<Integer> indexes = new ArrayList<>();
         int row = 0;
@@ -54,7 +56,7 @@ public enum TQChestWeapon {
         }
         return indexes;
     }
-
+    
     public Collection<Integer> getColIndexes() {
         Collection<Integer> indexes = new ArrayList<>();
         int col = 0;
@@ -64,17 +66,17 @@ public enum TQChestWeapon {
         }
         return indexes;
     }
-
+    
     public Integer getWidth() {
         return width;
     }
-
+    
     public Integer getHeight() {
         return height;
     }
-
+    
     public Integer getMax() {
         return max;
     }
-
+    
 }

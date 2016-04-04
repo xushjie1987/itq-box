@@ -6,9 +6,9 @@ import java.util.List;
 
 public class TQChestBox {
     public static final Integer     MAX_ROW  = 12;
-
+    
     public static final Integer     MAX_COL  = 6;
-
+    
     public static final Integer[][] STEP_X_Y = new Integer[][] {
                                              // 1
                                              { 0x00, 0x00 },
@@ -59,11 +59,11 @@ public class TQChestBox {
                                              { 0, 0, 0, 0, 0, 0 },
                                              // 12
                                              { 0, 0, 0, 0, 0, 0 } };
-
+    
     private Integer[]               count    = new Integer[] { 0, 0, 0, 0 };
-
+    
     private List<TQChestItem>       items    = new ArrayList<>();
-
+    
     /**
      * 添加一组相同类型的装备 <br>
      * 
@@ -71,7 +71,8 @@ public class TQChestBox {
      * @param weapon
      * @return
      */
-    public boolean addBatchItems(List<String> dbrs, TQChestWeapon weapon) {
+    public boolean addBatchItems(List<String> dbrs,
+                                 TQChestWeapon weapon) {
         //
         items.clear();
         //
@@ -91,7 +92,10 @@ public class TQChestBox {
                     //
                     item.setDbrFile(dbr);
                     //
-                    item.setPosition(STEP_X_Y[c][0], STEP_X_Y[c][1], STEP_X_Y[r][0], STEP_X_Y[r][1]);
+                    item.setPosition(STEP_X_Y[c][0],
+                                     STEP_X_Y[c][1],
+                                     STEP_X_Y[r][0],
+                                     STEP_X_Y[r][1]);
                     //
                     items.add(item);
                     //
@@ -101,29 +105,29 @@ public class TQChestBox {
         }
         return true;
     }
-
+    
     public Integer[] getCount() {
         return count;
     }
-
+    
     public void setCount(Integer[] count) {
         this.count = count;
     }
-
+    
     public List<TQChestItem> getItems() {
         return items;
     }
-
+    
     public void setItems(List<TQChestItem> items) {
         this.items = items;
     }
-
+    
     public int[][] getBoxMap() {
         return boxMap;
     }
-
+    
     public void setBoxMap(int[][] boxMap) {
         this.boxMap = boxMap;
     }
-
+    
 }
